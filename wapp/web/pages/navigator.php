@@ -27,7 +27,6 @@
 <body>
 
 <div id="wrapper">
-    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
             <a class="navbar-brand" href="index.php">Masquerader</a>
@@ -41,7 +40,6 @@
         </button>
 
         <ul class="nav navbar-nav navbar-left navbar-top-links">
-            <!--<li><a href="#"><i class="fa fa-home fa-fw"></i> Website</a></li>-->
         </ul>
 
         <ul class="nav navbar-right navbar-top-links">
@@ -61,7 +59,6 @@
                 </ul>
             </li>
         </ul>
-        <!-- /.navbar-top-links -->
 
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
@@ -72,9 +69,6 @@
                     <li>
                         <a href="training.php" class="active"><i class="fa fa-database fa-fw"></i> Training Center</a>
                     </li>
-<!--                    <li>-->
-<!--                        <a href="lab.php" class="active"><i class="fa fa-flask fa-fw"></i> Lab.</a>-->
-<!--                    </li>-->
                     <li>
                         <a href="logs.php" class="active"><i class="fa fa-history fa-fw"></i> Logs</a>
                     </li>

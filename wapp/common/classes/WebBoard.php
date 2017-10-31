@@ -12,6 +12,7 @@ if(!class_exists("WebBoard")){
 			parent::__construct($req);
 		}
 
+		//
 		function searchLog(){
 		    $page = $this->req["page"];
 		    $limit = $this->rowPerPage;

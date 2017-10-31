@@ -148,6 +148,11 @@ if (!class_exists("LoginUtil")) {
         }
 
 
+        static function doAppLogout()
+        {
+            setcookie("userMap", "", time() - 3600, "/", "");
+        }
+
         static function getAppUser()
         {
             $cookieStr = $_COOKIE["userMap"];
@@ -173,17 +178,9 @@ if (!class_exists("LoginUtil")) {
             return $map;
         }
 
-        static function doAppLogout()
-        {
-            setcookie("userMap", "", time() - 3600, "/", "");
-        }
-
-        static function doWebLogin($row)
-        {
-
+        static function doWebLogin($row){
             if ($row != null) {
                 $cookieStr = json_encode($row);
-
                 $cookieStr = bin2hex($cookieStr); // 16진수로 암호화
                 setcookie("webUserMap", $cookieStr, -1, "/", "");
                 return true;
@@ -193,43 +190,26 @@ if (!class_exists("LoginUtil")) {
         }
 
         // 로그인 유무
-        static function isWebLogin()
-        {
+        static function isWebLogin(){
             $cookieStr = $_COOKIE["webUserMap"];
-
             return ($cookieStr != "") ? true : false;
         }
 
-        static function getWebUser()
-        {
+        static function getWebUser(){
             $cookieStr = $_COOKIE["webUserMap"];
             if (LoginUtil::isWebLogin() == false) {
-                $map['userNo'] = "-1";
+                $map = null;
             }
             else {
                 $cookieStr = pack("H*", $cookieStr);
-
-//                $aUser = explode(chr(self::$spliter), $cookieStr);
-
                 $map = json_decode($cookieStr);
-
-//                $map['id'] = $aUser[0];
-//                $map['name'] = $aUser[1];
-//                $map['phone'] = $aUser[2];
-//                $map['role'] = $aUser[3];
-//                $map['regDate'] = $aUser[4];
-//                $map['lastLogin'] = $aUser[5];
-//                $map['lastIp'] = $aUser[6];
             }
             return $map;
         }
 
-        static function doWebLogout()
-        {
+        static function doWebLogout(){
             setcookie("webUserMap", "", time() - 3600, "/", "");
         }
-
-
     }
 }
 ?>
