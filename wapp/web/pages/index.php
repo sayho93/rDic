@@ -3,10 +3,10 @@
 <? include $_SERVER["DOCUMENT_ROOT"] . "/common/classes/WebBoard.php" ;?>
 
 <? include "navigator.php";?>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function(){
+            //enterHandling
             $(document).bind('keypress',inputKeyUp);
-
             function inputKeyUp(e) {
                 e.which = e.which || e.keyCode;
                 if(e.which == 13) {
@@ -14,6 +14,7 @@
                 }
             }
 
+            //getResponse
             $(".jSend").click(function(){
                 var msg = $("#message").val();
 
@@ -25,26 +26,48 @@
                     data: {
                         "msg": msg
                     },
-                    success: function (data) {
+                    success: function (data){
                         $(".added").remove();
                         $(".timeline").append(data);
-
                         $("#message").val("");
 
+                        refreshDashBoard();
                     }
                 });
             });
+
+            //dashBoard count refresh func
+            function refreshDashBoard(){
+                $.ajax({
+                    url: "/action_front.php?cmd=WebBoard.getDashBoardData",
+                    async: true,
+                    cache: false,
+                    dataType: "json",
+                    success: function (data){
+                        var tmpDat = data.data;
+
+                        console.log(tmpDat);
+                        $(".jResp").html(tmpDat.responses);
+                        $(".jLearned").html(tmpDat.learned);
+                        $(".jLinkage").html(tmpDat.linkages);
+                    }
+                });
+            }
+
+            //onload
+            refreshDashBoard();
         });
     </script>
+
+    <div id="json"></div>
 
             <div id="page-wrapper" style="height: 150%">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Dashboard</h1>
+                        <h1 class="page-header"><i class="fa fa-dashboard fa-fw"></i>Dashboard</h1>
                     </div>
-                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
+
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="panel panel-primary">
@@ -54,15 +77,14 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">0</div>
+                                        <div class="huge jResp"></div>
                                         <div>Total Response</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="logs.php?mode=all">
+                            <a>
                                 <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <span class="pull-left">&nbsp;</span>
 
                                     <div class="clearfix"></div>
                                 </div>
@@ -77,7 +99,7 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">0</div>
+                                        <div class="huge jLearned"></div>
                                         <div>Total Data</div>
                                     </div>
                                 </div>
@@ -101,7 +123,7 @@
                                         <i class="fa fa-link fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">0</div>
+                                        <div class="huge jLinkage"></div>
                                         <div>Total Linkages</div>
                                     </div>
                                 </div>
@@ -117,14 +139,13 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
+
                 <div class="row">
                     <div class="col-lg-12" >
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <i class="fa fa-flask fa-fw"></i> Laboratory
                             </div>
-                            <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <ul class="timeline">
                                     <li>
@@ -142,9 +163,6 @@
                     </div>
                 </div>
             </div>
-            <!-- /#page-wrapper -->
-
         </div>
-        <!-- /#wrapper -->
 
 <? include "footer.php";?>

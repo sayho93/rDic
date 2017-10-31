@@ -36,6 +36,22 @@ if(!class_exists("WebBoard")){
 
 		    return json_decode($retVal)->data;
         }
+
+        function deleteLog(){
+            $no = $this->req["no"];
+
+            $actionUrl = "{$this->serverRoot}/web/delete/".$no;
+            $retVal = $this->getData($actionUrl, Array());
+
+            return $retVal;
+        }
+
+        function getDashBoardData(){
+            $actionUrl = "{$this->serverRoot}/web/dashboard";
+            $retVal = $this->getData($actionUrl, Array());
+
+            return $retVal;
+        }
 		
 	}
 }

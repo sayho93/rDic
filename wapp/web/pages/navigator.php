@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Richware Dictionary</title>
+    <title>Masquerader</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/metisMenu.min.css" rel="stylesheet">
     <link href="../css/timeline.css" rel="stylesheet">
@@ -22,14 +22,19 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<!--    sweetAlert-->
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
+    <script type="text/javascript" src="../js/sweetalert.min.js"></script>
+
+
+
 </head>
 <body>
-
 <div id="wrapper">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.php">Masquerader</a>
+            <a class="navbar-brand" href="index.php"><i class="fa fa-chain-broken fa-fw"></i>Masquerader</a>
         </div>
 
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

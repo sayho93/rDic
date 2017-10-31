@@ -12,6 +12,10 @@
 ?>
 <? include "navigator.php";?>
 
+<style>
+    th {text-align: center}
+</style>
+
 <script>
     $(document).ready(function(){
         var form = $("[name=form]");
@@ -36,6 +40,26 @@
             });
             form.submit();
         });
+
+        $(".jDelete").click(function(){
+            var no = $(this).attr("no");
+            $.ajax({
+                url: "/action_front.php?cmd=WebBoard.deleteLog",
+                async: false,
+                cache: false,
+                data : {
+                    "no" : no
+                },
+                dataType: "json",
+                success: function (data) {
+                    if(data.returnCode == "1") {
+                        swal({title:"",text:"삭제되었습니다.", type:"success"}, function(isConfirm){location.reload();});
+                        location.reload();
+                    }
+                }
+            });
+        });
+
     });
 </script>
             <div id="page-wrapper" style="height: 150%">
@@ -85,6 +109,7 @@
                                                         <th>빈도</th>
                                                         <th>갱신일</th>
                                                         <th>등록일</th>
+                                                        <th></th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -101,6 +126,7 @@
                                                             <td><?=$row->frequency?></td>
                                                             <td><?=$row->uptDate?></td>
                                                             <td><?=$row->regDate?></td>
+                                                            <td style="text-align: center"><a class="btn btn-danger jDelete" no="<?=$row->no?>">Delete</a></td>
                                                         </tr>
                                                     <?}?>
                                                     </tbody>

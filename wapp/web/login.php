@@ -22,6 +22,11 @@
 <script type="text/javascript" src="js/sweetalert.min.js"></script>
 <script type="text/javascript" src="/common/js/jquery_rich/RichBaseExtends.js"></script>
 <script type="text/javascript" src="js/jquery-ui.js"></script>
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/metisMenu.min.css" rel="stylesheet">
+<link href="./css/timeline.css" rel="stylesheet">
+<link href="./css/startmin.css" rel="stylesheet">
+<link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <script>
 //    swal({title:"",text:"아이디와 비밀번호가 일치하지 않습니다.", type:"warning"}, function(isConfirm){location.reload();});
     $(document).ready(function(){
@@ -71,8 +76,9 @@
 	
 <form id="fm1">
     <div class="login">
-        <h1>Masquerader</h1>
 
+<!--        <h1><i class="fa fa-chain-broken fa-fw"></i>Masquerader</h1>-->
+        <img src="./image/title_mas.png" style="height: 130px; width: 350px;"/>
         <div class="login_input">
             <input type="text" id="userID" name="userID" placeholder="성명" />
             <input type="password" id="userPwd" name="userPwd" placeholder="휴대폰 번호" />
