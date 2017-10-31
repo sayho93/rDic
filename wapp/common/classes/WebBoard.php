@@ -12,7 +12,7 @@ if(!class_exists("WebBoard")){
 			parent::__construct($req);
 		}
 
-		//
+		//log list
 		function searchLog(){
 		    $page = $this->req["page"];
 		    $limit = $this->rowPerPage;
@@ -26,6 +26,7 @@ if(!class_exists("WebBoard")){
             return $list;
         }
 
+        //chatBot response
         function instantResponse(){
 		    $msg = $this->req["msg"];
 
