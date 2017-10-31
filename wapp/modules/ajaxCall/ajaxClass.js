@@ -1,3 +1,10 @@
+/**
+ * Created by PhpStorm.
+ * User: sayho
+ * Date: 2017-10-31
+ * Time: 오후 5:38
+ */
+
 class AjaxSender {
     constructor(url, asyncOption, dataType, map) {
         this.url=url;

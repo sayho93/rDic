@@ -11,39 +11,27 @@
                 e.which = e.which || e.keyCode;
                 if(e.which == 13) {
                     $(".jSend").trigger("click");
-                }
+                } 
             }
 
             //getResponse
             $(".jSend").click(function(){
-                var msg = $("#message").val();
-
-                $.ajax({
-                    url: "/web/pages/entityInstant.php",
-                    async: true,
-                    cache: false,
-                    dataType: "html",
-                    data: {
-                        "msg": msg
-                    },
-                    success: function (data){
-                        $(".added").remove();
-                        $(".timeline").append(data);
-                        $("#message").val("");
-
-                        refreshDashBoard();
-                    }
+                var myMap = new Map();
+                myMap.put("msg", $("#message").val());
+                var ajax = new AjaxSender("/web/pages/entityInstant.php", true, "html", myMap.map);
+                var data = ajax.send(function(data){
+                    $(".added").remove();
+                    $(".timeline").append(data);
+                    $("#message").val("");
+                    refreshDashBoard();
                 });
             });
 
+            //TODO AjaxSender sample source
             var myMap = new Map();
-            console.log(myMap.length);
             myMap.put("msg", "aaaaa");
             myMap.put("no", 12);
-
             console.log(myMap.map);
-
-
             var ajax = new AjaxSender("/web/pages/entityInstant.php", true, "html", myMap.map);
             var data = ajax.send(function(data){
                 console.log(data);
@@ -62,7 +50,6 @@
                     dataType: "json",
                     success: function (data){
                         var tmpDat = data.data;
-
                         console.log(tmpDat);
                         $(".jResp").html(tmpDat.responses);
                         $(".jLearned").html(tmpDat.learned);
