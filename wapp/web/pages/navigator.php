@@ -26,6 +26,10 @@
 <!--    sweetAlert-->
     <link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
     <script type="text/javascript" src="../js/sweetalert.min.js"></script>
+<!--    map-->
+    <script type="text/javascript" src="/modules/sehoMap/sehoMap.js"></script>
+<!--    ajaxCall-->
+    <script type="text/javascript" src="/modules/ajaxCall/ajaxClass.js"></script>
 
 
 

@@ -36,6 +36,23 @@
                 });
             });
 
+            var myMap = new Map();
+            console.log(myMap.length);
+            myMap.put("msg", "aaaaa");
+            myMap.put("no", 12);
+
+            console.log(myMap.map);
+
+
+            var ajax = new AjaxSender("/web/pages/entityInstant.php", true, "html", myMap.map);
+            var data = ajax.send(function(data){
+                console.log(data);
+            });;
+
+
+
+
+
             //dashBoard count refresh func
             function refreshDashBoard(){
                 $.ajax({
@@ -77,7 +94,7 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge jResp"></div>
+                                        <div class="huge jResp">0</div>
                                         <div>Total Response</div>
                                     </div>
                                 </div>
@@ -99,7 +116,7 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge jLearned"></div>
+                                        <div class="huge jLearned">0</div>
                                         <div>Total Data</div>
                                     </div>
                                 </div>
@@ -123,7 +140,7 @@
                                         <i class="fa fa-link fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge jLinkage"></div>
+                                        <div class="huge jLinkage">0</div>
                                         <div>Total Linkages</div>
                                     </div>
                                 </div>
